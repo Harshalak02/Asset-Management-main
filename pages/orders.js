@@ -68,7 +68,7 @@ export default function OrdersPage() {
                 </thead>
                 <tbody>
                     {countCategories.map(category => (
-                        <tr key={category.name}>
+                        <tr key={category._id}>
                             <td>{category.name}</td>
                             <td>{category.count}</td>
                         </tr>
