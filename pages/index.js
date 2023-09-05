@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout";
 import Nav from "../components/Nav"
 import { useSession, signIn, signOut } from "next-auth/react";
-import Chart from '@/components/Charts';
+
 
 
 export default function Home() {
@@ -13,7 +13,7 @@ export default function Home() {
     <div className="text-blue-900 flex justify-between">
       <h2>
         Hello,<b>{session?.user?.name}</b>
-        <Chart />
+
 
       </h2>
       <div className="flex bg-grey-300 gap-1 text- black rounded-lg overflow-hidden">

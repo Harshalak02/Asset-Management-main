@@ -1,38 +1,20 @@
 import Layout from "@/components/Layout";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { countComplaints, complaintCounts } from "@/pages/complaintCounts"
+
 
 export default function OrdersPage() {
     const [orders, setOrders] = useState([]);
     const [countCategories, setCountCategories] = useState([]);
-    /* const [complaintCounts, setComplaintCounts] = useState({
-         SOS: 0,
-         SEZ: 0,
-         MAB: 0
-     });*/
+    const [complaintCounts, setComplaintCounts] = useState({
+        SOS: 0,
+        SEZ: 0,
+        MAB: 0
+    });
 
-    useEffect(() => {
-        axios.get('/api/orders').then(response => {
-            setOrders(response.data);
-            const counts = countComplaints(response.data);
-            Object.assign(complaintCounts, counts);
-            const categories = {};
 
-            orders.forEach(order => {
-                order.line_items.forEach(item => {
-                    if (categories[item.category]) {
-                        categories[item.category] += 1;
-                    } else {
-                        categories[item.category] = 1;
-                    }
-                });
-            });
-            const countCategoriesArray = Object.entries(categories).map(([name, count]) => ({ name, count }));
-            setCountCategories(countCategoriesArray);
-            //setCountCategories(categories);
-        })
-    }, []);
+
+
     /* useEffect(() => {
          const counts = {
              SOS: 0,
@@ -55,10 +37,7 @@ export default function OrdersPage() {
      }, [orders]);*/
     return (
         <Layout>
-            <h1>Complaints</h1>
-            <p>Total Complaints from SOS: {complaintCounts.SOS}</p>
-            <p>Total Complaints from SEZ: {complaintCounts.SEZ}</p>
-            <p>Total Complaints from MAB: {complaintCounts.MAB}</p>
+
             <table className="basic">
                 <thead>
                     <tr>
@@ -104,4 +83,3 @@ export default function OrdersPage() {
         </Layout>
     )
 }
-export { complaintCounts };

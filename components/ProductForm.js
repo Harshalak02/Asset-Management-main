@@ -4,6 +4,7 @@ import axios from "axios";
 import Layout from "./Layout";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import Image from "next/image";
 
 
 
@@ -116,7 +117,7 @@ export default function ProductForm({
                 <div className="mb-4">
                     <label>Product Image:</label>
                     <div className="flex flex-wrap gap-4">
-                        <img
+                        <Image
                             src={convertBase64ToImageURL(image)} // Assuming the image contains the base64-encoded image
                             alt="Selected"
                             className="w-32 h-32 object-cover rounded-md"
@@ -156,18 +157,18 @@ export default function ProductForm({
             <select value={category} onChange={ev => setCategory(ev.target.value)}>
                 <option value="">No Category</option>
                 {categories.length > 0 && categories.map(c => (
-                    <option value={c._id}>{c.name}</option>
+                    <option key={c._id} value={c._id}>{c.name}</option>
                 ))}
             </select>
             {propertiesToFill.length > 0 && propertiesToFill.map(p => (
 
-                <div className="flex-gap-1">
+                <div key={p._id} className="flex-gap-1">
                     <div>
                         {p.name[0]?.toUpperCase() + p.name?.substring(1)}
                     </div>
                     <select value={productProperties[p.name]} onChange={ev => setProductProp(p.name, ev.target.value)}>
                         {p.values.map(v => (
-                            <option value={v}>{v}</option>
+                            <option key={v._id} value={v}>{v}</option>
                         ))}
                     </select>
                 </div>
