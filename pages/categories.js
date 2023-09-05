@@ -112,7 +112,7 @@ export default function CategoriesPage() {
                         <option value="0">No parent Category</option>
                         {categories.length > 0 && categories.map(
                             category => (
-                                <option value={category._id}>{category.name}</option>
+                                <option key={category._id} value={category._id}>{category.name}</option>
                             )
                         )}
 
@@ -124,7 +124,7 @@ export default function CategoriesPage() {
                     </label>
                     <button onClick={addProperty} type="button" className=" bg-blue-700 text-white px-4 py-1 rounded-md text-md mb-2">Add new property</button>
                     {properties.length > 0 && properties.map((property, index) => (
-                        <div className="flex gap-1 mb-2">
+                        <div key={index} className="flex gap-1 mb-2">
                             <input type="text" value={property.name} className="mb-0" onChange={ev => handlePropertyNameChange(index, property, ev.target.value)} placeholder="property name(example: color" />
                             <input type="text" value={property.values} className="mb-0" onChange={ev => handlePropertyValuesChange(index, property, ev.target.value)} placeholder="values,coma separated" />
                             <button type="button" onClick={() => removeProperty(index)} className="bg-red-400 px-4 py-1 rounded-md text-white">Remove</button>
