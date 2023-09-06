@@ -13,7 +13,7 @@ export default function Layout({ children }) {
             <div className="bg-blue-900 w-screen h-screen flex flex-col items-center">
 
                 <div className="w-16 h-auto absolute top-0 left-0 m-4">
-                    <img src="/ril.png" alt="" />
+                    <img src="/mainLogo.jpeg" alt="" />
                     <div className="top-0 mt-0 left-0">
                         <h1 className="text-white text-2xl mb-4">Welcome to ASSET MANAGEMENT ADMIN</h1>
 
